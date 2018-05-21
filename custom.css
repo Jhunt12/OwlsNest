@@ -1,0 +1,13 @@
+.altcolor{
+    background-color:#deebed;
+    border-radius:15px;
+    margin-top:20px;
+    padding:20px;
+}
+.form-control {
+    display: inline-block;
+}
+
+.invis {
+    display: none;
+}
