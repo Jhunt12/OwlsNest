@@ -32,6 +32,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119764780-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-119764780-1');
+	</script>
+
   </head>
 
   <body bgcolor="#CCCC00"><!--style="background-image:url(snailpattern.png)">-->
@@ -50,10 +59,10 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="">Discord</a></li>
-            <li role="presentation"><a href="https://ropsten.etherscan.io/address/0xf0065b485407821868b5f234a3c5fdb49e25bb52">Contract</a></li>
+            <li role="presentation"><a href="">Contract</a></li>
           </ul>
         </nav>
-        <h3 class="text-muted">Ether Owls Nest</h3>  <h4 class="text-muted">Crypto Idle Game</h4> 
+        <h3 class="text-muted">Ether Owls Nest</h3>  <h4 class="text-muted">Crypto Idle Game - no more bots, less inflation</h4> 
       </div>
 
       <div class="jumbotron">
@@ -68,13 +77,13 @@
                     
                     </div>
                 <div class="col-md-6">
-                    <h2><span class="numowls">?</span> Owls</h2>
+                    <h2><span class="numshrimp">?</span> Owls</h2>
                     <br>
                     <h2>Producing <span id="production">?</span> eggs per hour</h2>
                 </div>
               </div>
               <div class="row">
-                <p><a id="getfreeowls" class="btn btn-lg btn-success invis" onclick="getFreeOwls2()" role="button">Get Freeish Owls!</a></p>
+                <p><a id="getfreeshrimp" class="btn btn-lg btn-success invis" onclick="getFreeShrimp2()" role="button">Get Freeish Owls!</a></p>
 		
               </div>
           </div>
@@ -85,7 +94,7 @@
                     <div class="col-md-8">
                     <h2><span class="numeggs">0</span> Eggs
                     <br>
-                    (<span id="timeuntilfull">?</span> until nest full)
+                    (<span id="timeuntilfull">?</span> until hatchery full)
                     </h2>
                     </div>
               </div>
@@ -95,7 +104,7 @@
                         <img src="shrimpegg.png" width="50" height="50" alt="Egg">
                     </div>
                     
-                    <div class="col-md-4"><p><a class="btn btn-lg btn-success" onclick="hatchEggs1(displayTransactionMessage)" role="button">Hatch <span id="hatchowlsquantity">?</span> Owls</a></p></div>
+                    <div class="col-md-4"><p><a class="btn btn-lg btn-success" onclick="hatchEggs1(displayTransactionMessage)" role="button">Hatch <span id="hatchshrimpquantity">?</span> Owls</a></p></div>
               </div>
               <div class="row">
                   <div class="col-md-4"></div>
@@ -132,9 +141,9 @@
                     
                     </div>
                 <div class="col-md-7">
-                    <a class="btn btn-lg btn-success" onclick="becomeOwlTamer(displayTransactionMessage)"  role="button">Become the OwlTamer</a>
-                    <h2>Sacrifice <span id="owltamerprice">?</span> Owls</h2>
-					<h4><br>Rises by 100,000 with each new Owl Tamer<span id="currentowltamer"></span></h4>
+                    <a class="btn btn-lg btn-success" onclick="becomeOwlmaster(displayTransactionMessage)"  role="button">Become the Owlmaster</a>
+                    <h2>Sacrifice <span id="owlmasterprice">?</span> Owls</h2>
+					<h4><br>The next sacrifice will require 100,000 more Owls.<span id="currentowlmaster"></span></h4>
 					<br>(NOTE: if you have eggs, some of them will disappear when you sacrifice owls. Make sure to hatch first!)
                 </div>
               </div>
@@ -148,7 +157,7 @@
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>Earn Ethereum Farming Owls!</h4>
-          <p>Ether Owls Nest is the #1 Owl farming simulator and idle game on the blockchain. The more Owls you have, the more eggs they lay (each owl lays at a rate of 1 per day). Hatch more Owls with your eggs to multiply your production, or cash them out for Ethereum!</p>
+          <p>Ether Owls Nest is the #1 Owl farming simulator and idle game on the blockchain. The more owls you have, the more eggs they lay (each wol lays at a rate of 1 per day). Hatch more owls with your eggs to multiply your production, or cash them out for Ethereum!</p>
 
 
           <h4>Powered by Metamask</h4>
@@ -156,8 +165,8 @@
         </div>
 
         <div class="col-lg-6">
-            <h4>EthOwls</h4>
-          <p>Those willing to make the ultimate sacrifice can become the OwlTamer, and collect tribute on every egg sale.</p>
+            <h4>Team Eth Owls</h4>
+          <p>To prevent inflation, Owls Nest has several tricks over their competitors. Owls are attached to their progeny and one fifth of your nest will die if you sell your eggs. Those willing to make the greatest sacrifice can become the Owlmaster, and collect tribute on every egg sale.</p>
           
             <h4>Referrals</h4>
           <p>Earn <b>20%</b> the number of all eggs hatched by anyone who starts playing using your link: <a onclick="copyRef()" id="playerreflink">?</span></p>
