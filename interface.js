@@ -414,7 +414,7 @@ abi=[
 	}
 ]
 
-contractAddress="0x1d4D7804e0A63D7C496675A7dAE79855162e9961"//"0xdc078ff399d0001c31454e83896e8881d164fb95"//"0x53e0B5790b67BFE4218b48D8DA14a5D47D8daeF8"//"0xd1B9D4f28A4F782Ea66C449A667135266Bccb1Bc"//"0x0a11657E4341DC2CB11282F3782E418B63F673F6"//"0x00E904aB49c0417a60Cd674d2B2628a3FD5be57d"//"0x4d990acf40aec18478849dfbb58119e55a182166"//"0xe00d440e22b3f4e8dc9672223f6e683eba8b5f06"//"0x42e33f20aced16114e53c3b236426384a5eca7f6"//"0x4b9a47db592e0a49ea913f70800bd1272c757103"//"0xf50493dd5931a35ddf4ce9c347c3de0a554f4de4"//"0x27fe61ed7f0b113fae9697219b4bfd3a80011512"
+contractAddress="0xf0065b485407821868B5F234a3c5fdB49e25bb52"//"0xdc078ff399d0001c31454e83896e8881d164fb95"//"0x53e0B5790b67BFE4218b48D8DA14a5D47D8daeF8"//"0xd1B9D4f28A4F782Ea66C449A667135266Bccb1Bc"//"0x0a11657E4341DC2CB11282F3782E418B63F673F6"//"0x00E904aB49c0417a60Cd674d2B2628a3FD5be57d"//"0x4d990acf40aec18478849dfbb58119e55a182166"//"0xe00d440e22b3f4e8dc9672223f6e683eba8b5f06"//"0x42e33f20aced16114e53c3b236426384a5eca7f6"//"0x4b9a47db592e0a49ea913f70800bd1272c757103"//"0xf50493dd5931a35ddf4ce9c347c3de0a554f4de4"//"0x27fe61ed7f0b113fae9697219b4bfd3a80011512"
 
 function buyEggs(eth,callback){
     var contractAbi = web3.eth.contract(abi);
@@ -455,7 +455,7 @@ function getFreeOwls(eth,callback){
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
     function(error,result){
         if(!error){
-            console.log('getFreeShrimp ',eth);
+            console.log('getFreeOwls ',eth);
             callback()
         }
         else{
