@@ -71,7 +71,7 @@ function refreshData(){
             }
         }
         var productiondoc=document.getElementById('production')
-        productiondoc.textContent=formatEggs(lastNumShrimp*60*60)
+        productiondoc.textContent=formatEggs(lastNumOwls*60*60)
     });
     updateBuyPrice()
     updateSellPrice()
@@ -107,7 +107,7 @@ function liveUpdateEggs(){
             return;
         }
         difference=(currentTime-lastUpdate)/1000
-        additionalEggs=Math.floor(difference*lastNumShrimp)
+        additionalEggs=Math.floor(difference*lastNumOwls)
         updateEggNumber(formatEggs(lastNumEggs+additionalEggs))
     }
 }
@@ -151,9 +151,9 @@ function updateCurrentOwltamer(){
 }
 
 function getFreeOwls2(){
-    var ethtospenddoc=0.001//document.getElementById('freesnailspend')
+    var ethtospenddoc=0.001//document.getElementById('freeowlspend')
     weitospend=web3.toWei(ethtospenddoc,'ether')
-    getFreeowls(weitospend,function(){
+    getFreeOwls(weitospend,function(){
         displayTransactionMessage();
     });
 }
