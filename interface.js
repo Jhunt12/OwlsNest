@@ -3,7 +3,7 @@ abi=[
 	{
 		"constant": false,
 		"inputs": [],
-		"name": "becomeSnailmaster",
+		"name": "becomeOwltamer",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -21,7 +21,7 @@ abi=[
 	{
 		"constant": false,
 		"inputs": [],
-		"name": "getFreeShrimp",
+		"name": "getFreeOwls",
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
@@ -213,7 +213,7 @@ abi=[
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "EGGS_TO_HATCH_1SHRIMP",
+		"name": "EGGS_TO_HATCH_1OWL",
 		"outputs": [
 			{
 				"name": "",
@@ -274,7 +274,7 @@ abi=[
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getMyShrimp",
+		"name": "getMyOwls",
 		"outputs": [
 			{
 				"name": "",
@@ -288,7 +288,7 @@ abi=[
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getSnailmasterReq",
+		"name": "getowltamerReq",
 		"outputs": [
 			{
 				"name": "",
@@ -387,7 +387,7 @@ abi=[
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "snailmasterReq",
+		"name": "owltamerReq",
 		"outputs": [
 			{
 				"name": "",
@@ -401,7 +401,7 @@ abi=[
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "STARTING_SHRIMP",
+		"name": "STARTING_OWLS",
 		"outputs": [
 			{
 				"name": "",
@@ -414,7 +414,7 @@ abi=[
 	}
 ]
 
-contractAddress="0xdc078ff399d0001c31454e83896e8881d164fb95"//"0x53e0B5790b67BFE4218b48D8DA14a5D47D8daeF8"//"0xd1B9D4f28A4F782Ea66C449A667135266Bccb1Bc"//"0x0a11657E4341DC2CB11282F3782E418B63F673F6"//"0x00E904aB49c0417a60Cd674d2B2628a3FD5be57d"//"0x4d990acf40aec18478849dfbb58119e55a182166"//"0xe00d440e22b3f4e8dc9672223f6e683eba8b5f06"//"0x42e33f20aced16114e53c3b236426384a5eca7f6"//"0x4b9a47db592e0a49ea913f70800bd1272c757103"//"0xf50493dd5931a35ddf4ce9c347c3de0a554f4de4"//"0x27fe61ed7f0b113fae9697219b4bfd3a80011512"
+contractAddress="0x1d4D7804e0A63D7C496675A7dAE79855162e9961"//"0xdc078ff399d0001c31454e83896e8881d164fb95"//"0x53e0B5790b67BFE4218b48D8DA14a5D47D8daeF8"//"0xd1B9D4f28A4F782Ea66C449A667135266Bccb1Bc"//"0x0a11657E4341DC2CB11282F3782E418B63F673F6"//"0x00E904aB49c0417a60Cd674d2B2628a3FD5be57d"//"0x4d990acf40aec18478849dfbb58119e55a182166"//"0xe00d440e22b3f4e8dc9672223f6e683eba8b5f06"//"0x42e33f20aced16114e53c3b236426384a5eca7f6"//"0x4b9a47db592e0a49ea913f70800bd1272c757103"//"0xf50493dd5931a35ddf4ce9c347c3de0a554f4de4"//"0x27fe61ed7f0b113fae9697219b4bfd3a80011512"
 
 function buyEggs(eth,callback){
     var contractAbi = web3.eth.contract(abi);
@@ -432,14 +432,14 @@ function buyEggs(eth,callback){
     });
 }
 
-function becomeSnailmaster(callback){
+function becomeOwltamer(callback){
     var contractAbi = web3.eth.contract(abi);
     var myContract = contractAbi.at(contractAddress);
     var outputData = myContract.becomeSnailmaster.getData();
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('becomeSnailmaster ',);
+            console.log('becomeOwltamer ',);
             callback()
         }
         else{
@@ -448,10 +448,10 @@ function becomeSnailmaster(callback){
     });
 }
 
-function getFreeShrimp(eth,callback){
+function getFreeOwls(eth,callback){
     var contractAbi = web3.eth.contract(abi);
     var myContract = contractAbi.at(contractAddress);
-    var outputData = myContract.getFreeShrimp.getData();
+    var outputData = myContract.getFreeOwls.getData();
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
     function(error,result){
         if(!error){
@@ -638,14 +638,14 @@ function devFee(amount,callback){
 }
 
 
-function EGGS_TO_HATCH_1SHRIMP(callback){
+function EGGS_TO_HATCH_1OWL(callback){
     var contractAbi = web3.eth.contract(abi);
     var myContract = contractAbi.at(contractAddress);
-    var outputData = myContract.EGGS_TO_HATCH_1SHRIMP.getData();
+    var outputData = myContract.EGGS_TO_HATCH_1OWL.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('EGGS_TO_HATCH_1SHRIMP ',web3.toDecimal(result));
+            console.log('EGGS_TO_HATCH_1OWL ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
@@ -671,14 +671,14 @@ function getBalance(callback){
     });
 }
 
-function getSnailmasterReq(callback){
+function getOwltamerReq(callback){
     var contractAbi = web3.eth.contract(abi);
     var myContract = contractAbi.at(contractAddress);
     var outputData = myContract.getBalance.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('getSnailmasterReq ',web3.toDecimal(result));
+            console.log('getOwltamerReq ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
@@ -722,10 +722,10 @@ function getMyEggs(callback){
 }
 
 
-function getMyShrimp(callback){
+function getMyOwls(callback){
     var contractAbi = web3.eth.contract(abi);
     var myContract = contractAbi.at(contractAddress);
-    var outputData = myContract.getMyShrimp.getData();
+    var outputData = myContract.getMyOwls.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
@@ -742,14 +742,14 @@ function getMyShrimp(callback){
 }
 
 
-function hatcheryShrimp(callback){
+function nestOwls(callback){
     var contractAbi = web3.eth.contract(abi);
     var myContract = contractAbi.at(contractAddress);
-    var outputData = myContract.hatcheryShrimp.getData();
+    var outputData = myContract.nestOwls.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('hatcheryShrimp ',web3.toDecimal(result));
+            console.log('nestOwls ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
