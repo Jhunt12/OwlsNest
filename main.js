@@ -57,7 +57,7 @@ function refreshData(){
     });
     getMyOwls(function(owls){
         lastNumOwls=owls
-        var gfsdoc=document.getElementById('getfreeshrimp')
+        var gfsdoc=document.getElementById('getfreeowls')
         if(owls>0){
             gfsdoc.style.display="none"
         }
