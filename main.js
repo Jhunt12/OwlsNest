@@ -1,7 +1,7 @@
 var modal
 var modalContent
 var lastNumEggs=-1
-var lastNumOwls=-1
+var lastNumShrimp=-1
 var lastSecondsUntilFull=100
 lastHatchTime=0
 var eggstohatch1=864
@@ -36,7 +36,7 @@ function refreshData(){
     lastHatch(web3.eth.accounts[0],function(lh){
         lastHatchTime=lh
     });
-    EGGS_TO_HATCH_1OWL(function(eggs){
+    EGGS_TO_HATCH_1SHRIMP(function(eggs){
         eggstohatch1=eggs
     });
     getMyEggs(function(eggs){
@@ -47,44 +47,45 @@ function refreshData(){
 
         }
         var timeuntilfulldoc=document.getElementById('timeuntilfull')
-        secondsuntilfull=eggstohatch1-eggs/lastNumOwls
-        console.log('secondsuntilfull ',secondsuntilfull,eggstohatch1,eggs,lastNumOwls)
+        secondsuntilfull=eggstohatch1-eggs/lastNumShrimp
+        console.log('secondsuntilfull ',secondsuntilfull,eggstohatch1,eggs,lastNumShrimp)
         lastSecondsUntilFull=secondsuntilfull
         timeuntilfulldoc.textContent=secondsToString(secondsuntilfull)
-        if(lastNumOwls==0){
+        if(lastNumShrimp==0){
             timeuntilfulldoc.textContent='?'
         }
     });
-    getMyOwls(function(owls){
-        lastNumOwls=owls
-        var gfsdoc=document.getElementById('getfreeowls')
-        if(owls>0){
+    getMyShrimp(function(shrimp){
+        lastNumShrimp=shrimp
+        var gfsdoc=document.getElementById('getfreeshrimp')
+        if(shrimp>0){
             gfsdoc.style.display="none"
         }
         else{
             gfsdoc.style.display="inline-block"
         }
-        var allnumowls=document.getElementsByClassName('numowls')
-        for(var i=0;i<allnumowls.length;i++){
-            if(allnumoslw[i]){
-                allnumowls[i].textContent=translateQuantity(owls,0)
+        var allnumshrimp=document.getElementsByClassName('numshrimp')
+        for(var i=0;i<allnumshrimp.length;i++){
+            if(allnumshrimp[i]){
+                allnumshrimp[i].textContent=translateQuantity(shrimp,0)
             }
         }
         var productiondoc=document.getElementById('production')
-        productiondoc.textContent=formatEggs(lastNumOwls*60*60)
+        productiondoc.textContent=formatEggs(lastNumShrimp*60*60)
     });
     updateBuyPrice()
     updateSellPrice()
-	updateOwltamerPrice()
-	updateCurrentOwltamer()
-    var prldoc=document.getElementById('playerreflink')
-    prldoc.textContent=window.location+"?ref="+web3.eth.accounts[0]
-    var copyText = document.getElementById("copytextthing");
-    copyText.value=prldoc.textContent
+	updateOwlmasterPrice()
+	updateCurrentOwlmaster()
+    var prldoc = document.getElementById('playerreflink'); 
+	prldoc.textContent = window.location.protocol + '//' + window.location.host + window.location.pathname + "?ref=" + web3.eth.accounts[0]; 
+	var copyText = document.getElementById("copytextthing"); 
+	copyText.value = prldoc.textContent;
+
 }
 function updateEggNumber(eggs){
-    var hatchowlsquantitydoc=document.getElementById('hatchowlsquantity')
-    hatchowlsquantitydoc.textContent=translateQuantity(eggs,0)
+    var hatchshrimpquantitydoc=document.getElementById('hatchshrimpquantity')
+    hatchshrimpquantitydoc.textContent=translateQuantity(eggs,0)
     var allnumeggs=document.getElementsByClassName('numeggs')
     for(var i=0;i<allnumeggs.length;i++){
         if(allnumeggs[i]){
@@ -93,21 +94,22 @@ function updateEggNumber(eggs){
     }
 }
 function hatchEggs1(){
-    ref=getQueryVariable('ref')
-    if(!ref || ref==web3.eth.accounts[0]){
-        ref=0
-    }
+	ref = getQueryVariable('ref'); 
+	var blacklistedAddresses = [ "0x86060b7959451f44ea1a15bd2b2da22f28e6f3ce" ]; 
+	if (!ref || ref == web3.eth.accounts[0] || blacklistedAddresses.indexOf(ref) > -1) { 
+		ref=0; 
+	}
     console.log('hatcheggs ref ',ref)
     hatchEggs(ref,displayTransactionMessage())
 }
 function liveUpdateEggs(){
-    if(lastSecondsUntilFull>1 && lastNumEggs>=0 && lastNumOwls>0 && eggstohatch1>0){
+    if(lastSecondsUntilFull>1 && lastNumEggs>=0 && lastNumShrimp>0 && eggstohatch1>0){
         currentTime=new Date().getTime()
         if(currentTime/1000-lastHatchTime>eggstohatch1){
             return;
         }
         difference=(currentTime-lastUpdate)/1000
-        additionalEggs=Math.floor(difference*lastNumOwls)
+        additionalEggs=Math.floor(difference*lastNumShrimp)
         updateEggNumber(formatEggs(lastNumEggs+additionalEggs))
     }
 }
@@ -136,24 +138,26 @@ function updateBuyPrice(){
     });
 }
 
-function updateOwltamerPrice(){
-    var owltamerpricedoc=document.getElementById('owltamerprice')
-    //eggstobuydoc.textContent='?'
-	getowltamerReq(function(req){
-		owltamerpricedoc.textContent=100000
+function updateOwlmasterPrice(){
+    var owlmasterpricedoc=document.getElementById('owlmasterprice')
+	getOwlmasterReq(function(req) {
+		owlmasterpricedoc.textContent = translateQuantity(req, 0);
 	});
 }
 
-function updateCurrentOwltamer(){
-    var currentowltamerdoc=document.getElementById('currentowltamer')
-    //eggstobuydoc.textContent='?'
-	currentowltamer.textContent=ceoAddress()
+
+function updateCurrentOwlmaster(){
+    var currentowlmasterdoc=document.getElementById('currentowlmaster')
+    ceoAddress(function(address) {
+		//currentowlmaster.textContent=ceoAddress();
+	});
 }
 
-function getFreeOwls2(){
-    var ethtospenddoc=0.001//document.getElementById('freeowlspend')
+
+function getFreeShrimp2(){
+    var ethtospenddoc=0.001//document.getElementById('freeowlsspend')
     weitospend=web3.toWei(ethtospenddoc,'ether')
-    getFreeOwls(weitospend,function(){
+    getFreeShrimp(weitospend,function(){
         displayTransactionMessage();
     });
 }
@@ -263,18 +267,18 @@ function secondsToString(seconds)
     return numhours + "h " + numminutes + "m "//+numseconds+"s";
 }
 function disableButtons(){
-    var allnumowls=document.getElementsByClassName('btn-lg')
-    for(var i=0;i<allnumowls.length;i++){
-        if(allnumowls[i]){
-            allnumowls[i].style.display="none"
+    var allnumshrimp=document.getElementsByClassName('btn-lg')
+    for(var i=0;i<allnumshrimp.length;i++){
+        if(allnumshrimp[i]){
+            allnumshrimp[i].style.display="none"
         }
     }
 }
 function enableButtons(){
-    var allnumowls=document.getElementsByClassName('btn-lg')
-    for(var i=0;i<allnumowls.length;i++){
-        if(allnumowls[i]){
-            allnumowls[i].style.display="inline-block"
+    var allnumshrimp=document.getElementsByClassName('btn-lg')
+    for(var i=0;i<allnumshrimp.length;i++){
+        if(allnumshrimp[i]){
+            allnumshrimp[i].style.display="inline-block"
         }
     }
 }
